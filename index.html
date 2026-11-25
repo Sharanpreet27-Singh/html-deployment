@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FleetTrack - Smart Logistics and Fleet Management Dashboard">
+    <title>FleetTrack | Logistics Management</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon">F</div>
+            <span>FleetTrack</span>
+        </div>
+
+        <div class="menu-label">MAIN MENU</div>
+
+        <nav class="navigation">
+            <a href="#overview" class="nav-link active">
+                <span>▦</span> Overview
+            </a>
+            <a href="#shipments" class="nav-link">
+                <span>📦</span> Shipments
+            </a>
+            <a href="#fleet" class="nav-link">
+                <span>🚚</span> Fleet Management
+            </a>
+            <a href="#tracking" class="nav-link">
+                <span>📍</span> Live Tracking
+            </a>
+            <a href="#analytics" class="nav-link">
+                <span>📊</span> Analytics
+            </a>
+        </nav>
+
+        <div class="menu-label">MANAGEMENT</div>
+
+        <nav class="navigation">
+            <a href="#drivers" class="nav-link">
+                <span>👨‍✈️</span> Drivers
+            </a>
+            <a href="#reports" class="nav-link">
+                <span>📄</span> Reports
+            </a>
+            <a href="#settings" class="nav-link">
+                <span>⚙</span> Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="support-card">
+                <div class="support-icon">💬</div>
+                <h4>Need Help?</h4>
+                <p>Contact our support team anytime.</p>
+                <button id="supportBtn">Contact Support</button>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">SA</div>
+                <div>
+                    <strong>Sharanpreet Singh</strong>
+                    <small>Administrator</small>
+                </div>
+                <span class="profile-menu">⋮</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="overview">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div>
+                    <h2>Dashboard Overview</h2>
+                    <p>Welcome back! Here's what's happening today.</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="date-display" id="currentDate"></div>
+                <button class="icon-btn" id="notificationBtn" aria-label="Notifications">
+                    ♧ <span class="notification-dot"></span>
+                </button>
+                <div class="top-avatar">SA</div>
+            </div>
+        </header>
+
+        <!-- Dashboard -->
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Monitor your logistics operations in real time.</p>
+                </div>
+                <button class="primary-btn" id="addShipmentBtn">
+                    + Add New Shipment
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Shipments</span>
+                        <span class="stat-icon blue">📦</span>
+                    </div>
+                    <h2 id="totalShipments">1,284</h2>
+                    <p class="positive">↑ 12.5% <span>from last month</span></p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>In Transit</span>
+                        <span class="stat-icon orange">🚚</span>
+                    </div>
+                    <h2 id="transitCount">356</h2>
+                    <p class="positive">↑ 8.2% <span>from last month</span></p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Delivered</span>
+                        <span class="stat-icon green">✓</span>
+                    </div>
+                    <h2 id="deliveredCount">892</h2>
+                    <p class="positive">↑ 18.4% <span>from last month</span></p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Pending Orders</span>
+                        <span class="stat-icon purple">◷</span>
+                    </div>
+                    <h2 id="pendingCount">36</h2>
+                    <p class="negative">↓ 3.1% <span>from last month</span></p>
+                </div>
+
+            </div>
+
+            <!-- Charts -->
+            <div class="content-grid" id="analytics">
+
+                <div class="panel chart-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Shipment Overview</h3>
+                            <p>Monthly shipment performance</p>
+                        </div>
+                        <select id="chartPeriod">
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+
+                    <div class="chart">
+                        <div class="chart-labels">
+                            <span>500</span>
+                            <span>400</span>
+                            <span>300</span>
+                            <span>200</span>
+                            <span>100</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="chart-area">
+                            <div class="chart-grid-lines">
+                                <i></i><i></i><i></i><i></i><i></i><i></i>
+                            </div>
+                            <div class="chart-bars" id="chartBars">
+                                <div class="bar-group"><div class="bar" style="height:45%"></div><span>Jan</span></div>
+                                <div class="bar-group"><div class="bar" style="height:65%"></div><span>Feb</span></div>
+                                <div class="bar-group"><div class="bar" style="height:55%"></div><span>Mar</span></div>
+                                <div class="bar-group"><div class="bar" style="height:80%"></div><span>Apr</span></div>
+                                <div class="bar-group"><div class="bar" style="height:70%"></div><span>May</span></div>
+                                <div class="bar-group"><div class="bar" style="height:90%"></div><span>Jun</span></div>
+                                <div class="bar-group"><div class="bar" style="height:75%"></div><span>Jul</span></div>
+                                <div class="bar-group"><div class="bar" style="height:95%"></div><span>Aug</span></div>
+                                <div class="bar-group"><div class="bar" style="height:60%"></div><span>Sep</span></div>
+                                <div class="bar-group"><div class="bar" style="height:85%"></div><span>Oct</span></div>
+                                <div class="bar-group"><div class="bar" style="height:72%"></div><span>Nov</span></div>
+                                <div class="bar-group"><div class="bar" style="height:100%"></div><span>Dec</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Status -->
+                <div class="panel fleet-panel" id="fleet">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Fleet Status</h3>
+                            <p>Current vehicle availability</p>
+                        </div>
+                        <span class="live-badge">● Live</span>
+                    </div>
+
+                    <div class="fleet-circle">
+                        <div class="circle-inner">
+                            <h2>85%</h2>
+                            <span>Active Fleet</span>
+                        </div>
+                    </div>
+
+                    <div class="fleet-legend">
+                        <div><i class="dot green-dot"></i> Active <strong>85%</strong></div>
+                        <div><i class="dot orange-dot"></i> Maintenance <strong>10%</strong></div>
+                        <div><i class="dot gray-dot"></i> Inactive <strong>5%</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipment Tracking -->
+            <div class="panel tracking-panel" id="tracking">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Track Your Shipment</h3>
+                        <p>Enter a tracking ID to check shipment status.</p>
+                    </div>
+                </div>
+
+                <form class="tracking-form" id="trackingForm">
+                    <input type="text" id="trackingInput"
+                        placeholder="Enter tracking ID (e.g. FT1001)" required>
+                    <button type="submit" class="primary-btn">Track Shipment →</button>
+                </form>
+                <div id="trackingResult" class="tracking-result"></div>
+            </div>
+
+            <!-- Recent Shipments -->
+            <div class="panel shipments-panel" id="shipments">
+
+                <div class="panel-heading shipment-heading">
+                    <div>
+                        <h3>Recent Shipments</h3>
+                        <p>Manage and monitor your latest shipments.</p>
+                    </div>
+
+                    <div class="table-actions">
+                        <input type="search" id="searchInput"
+                            placeholder="Search shipments...">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="In Transit">In Transit</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Customer</th>
+                                <th>Destination</th>
+                                <th>Order Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shipmentTable"></tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="tableCount">Showing shipments</span>
+                    <button id="viewAllBtn">View All →</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2026 FleetTrack. All rights reserved.</p>
+                <p>Smart Logistics Management Platform</p>
+            </footer>
+
+        </section>
+    </main>
+</div>
+
+<!-- Add Shipment Modal -->
+<div class="modal-overlay" id="shipmentModal">
+    <div class="modal">
+        <div class="modal-heading">
+            <div>
+                <h2>Add New Shipment</h2>
+                <p>Enter the shipment information below.</p>
+            </div>
+            <button id="closeModal" class="close-btn" aria-label="Close">×</button>
+        </div>
+
+        <form id="shipmentForm">
+            <label>Customer Name</label>
+            <input type="text" id="customerName" required placeholder="Customer name">
+
+            <label>Destination</label>
+            <input type="text" id="destination" required placeholder="City / Location">
+
+            <label>Amount (₹)</label>
+            <input type="number" id="amount" required min="1" placeholder="Enter amount">
+
+            <label>Shipment Status</label>
+            <select id="shipmentStatus">
+                <option>Pending</option>
+                <option>In Transit</option>
+                <option>Delivered</option>
+            </select>
+
+            <button type="submit" class="primary-btn submit-btn">
+                Create Shipment
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
